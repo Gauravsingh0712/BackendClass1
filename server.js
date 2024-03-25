@@ -25,3 +25,21 @@ app.post("/api/cars", (req, res) => {
   console.log(brand);
   res.send("car submitted successfully");
 });
+
+// database connection
+const mongoose = require("mongoose");
+mongoose
+  .connect("mongodb://127.0.0.1:27017/myDatabase", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("====================================");
+    console.log("Database connection established");
+  })
+  .catch((error) => {
+    console.error(
+      "Received an error during database connection:",
+      error.message
+    );
+  });
